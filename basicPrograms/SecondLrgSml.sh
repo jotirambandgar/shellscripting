@@ -1,6 +1,6 @@
-#!/bin/bash -x
+#!/bin/bash -xx
 
-function getThreeDigit(){
+function getThreeDigitNum(){
 	threeDigitRdm=$(( RANDOM%1000 ))
 	echo $threeDigitRdm
 }

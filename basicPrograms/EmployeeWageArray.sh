@@ -1,6 +1,6 @@
 #! /bin/bash 
 #TEMP=$(( RANDOM%2 ))
-PER_Hr_WAGE=500;
+	PER_Hr_WAGE=500;
 #function create for getting employee working hour
 function getWorkingHrs() {
 			#echo "present"

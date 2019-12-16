@@ -1,19 +1,15 @@
-#! /bin/bash 
-#TEMP=$(( RANDOM%2 ))
-PER_Hr_WAGE=500;
+#! /bin/bash -x 
+PER_HR_WAGE=500;
 #function create for getting employee working hour
 function getWorkingHrs() {
-			#echo "present"
-			if [ $(( RANDOM%2 )) -eq 1 ]
-				then
-					#echo "full time"
-					hr=8;
-				echo $hr
-			else
-					#echo "part time"
-					hr=4;
-				echo $hr
-			fi
+	if [ $(( RANDOM%2 )) -eq 1 ]
+	then
+		hr=8;
+		echo $hr
+	else
+		hr=4;
+		echo $hr
+	fi
 
 	}
 #random variable for deciding it employee present or not
@@ -36,27 +32,26 @@ function main(){
 	hrs=0
 	totalSalary=0
 	while [ $day -ne 20 -a $hrs -lt 50 ]
-		do
-			dayNum=$"day_$day"
-			present=$( presentyChecker )
-			if [ $present -eq 1 ]
-				then
-								hr=$( getWorkingHrs )
-								dayWage=$( perDayWage $hr )
-							#	totalWage[((counter++))]=$dayWage
-								wage["$dayNum"]=$"$dayWage"
-								totalSalary=$(( $dayWage + $totalSalary ))
-						hrs=$(( $hrs + $hr ))
-			else
-						wage[$dayNum]=0
-			fi
-			day=$(( $day + 1 ))
-			done
-			echo ${wage[@]}
-		for (( i=1 ; i<=${#wage[@]} ; i++))
-			do
-			echo "day $i : ${wage[day_$i]}"
-			done
+	do
+		dayNum=$"day_$day"
+		present=$( presentyChecker )
+		if [ $present -eq 1 ]
+		then
+			hr=$( getWorkingHrs )
+			dayWage=$( perDayWage $hr )
+			wage["$dayNum"]=$"$dayWage"
+			totalSalary=$(( $dayWage + $totalSalary ))
+			hrs=$(( $hrs + $hr ))
+		else
+			wage[$dayNum]=0
+		fi
+		day=$(( $day + 1 ))
+	done
+		echo ${wage[@]}
+	for (( i=1 ; i<=${#wage[@]} ; i++))
+	do
+		echo "day $i : ${wage[day_$i]}"
+	done
 }
 
 main

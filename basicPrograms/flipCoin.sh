@@ -2,7 +2,7 @@
 status=$(( RANDOM%2 ))
 if [ $status -gt 0 ]
 then
-echo "HEAD"
+	echo "HEAD"
 else
-echo "TAILS"
+	echo "TAILS"
 fi

@@ -18,7 +18,7 @@ function primeNumberChecker(){
 
 }
 
-function palindrome_number() {
+function palindromeNumberChecker() {
 	number1=$1
 	number2=$number1
 	temp=0;
